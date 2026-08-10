@@ -1,19 +1,40 @@
 # LocalDBCrudDemo
 
-Dimostratore WinForms CRUD per prodotti e utenti, con autenticazione ed esportazione CSV,
-Excel e PDF su SQL Server LocalDB.
+Dimostratore desktop CRUD per la gestione di prodotti e utenti. L'applicazione WinForms usa SQL
+Server LocalDB, include un flusso di autenticazione ed esporta dati in CSV, Excel e PDF.
 
-## Stack
+## Funzioni
 
-- C# e WinForms
-- .NET Framework 4.8
-- SQL Server LocalDB
+- accesso utente e gestione delle anagrafiche;
+- creazione, lettura, modifica ed eliminazione dei prodotti;
+- ricerca e visualizzazione tabellare;
+- esportazione dei dati nei formati CSV, XLSX e PDF.
 
-## Apertura
+## Stack e requisiti
 
-Aprire `LocalDB_mdf.sln` con Visual Studio 2022 e ripristinare i pacchetti NuGet indicati in
-`packages.config`.
+- C# e Windows Forms;
+- .NET Framework 4.8;
+- SQL Server Express LocalDB;
+- Visual Studio 2022 e pacchetti NuGet elencati in `packages.config`.
 
-Il database `DatabaseEsempio.mdf` rimane disponibile localmente ma è escluso da Git perché può
-contenere dati e hash di utenti. Prima di rendere il repository riproducibile serviranno uno
-schema SQL pulito e dati di esempio anonimi.
+Aprire `LocalDB_mdf.sln`, ripristinare i pacchetti e compilare il progetto `LocalDB_mdf`.
+
+## Struttura e dati locali
+
+- `LocalDB_mdf/`: sorgenti, form, modelli e configurazione del progetto;
+- `LocalDB_mdf.sln`: soluzione Visual Studio;
+- `packages/`: cache locale storica dei pacchetti.
+
+Il database `DatabaseEsempio.mdf` è escluso da Git perché può contenere dati e hash di utenti. Un
+clone non è quindi ancora autosufficiente: servono uno script SQL pulito, dati anonimi di esempio e
+istruzioni per impostare la stringa di connessione.
+
+## Stato e sicurezza
+
+Progetto didattico, non progettato per dati reali. Autenticazione, gestione delle password, query e
+validazione degli input devono essere riesaminate prima di qualunque uso diverso dalla demo locale.
+
+## Proprietà e licenza
+
+Copyright © 2026 Fabio De Deo — [www.ddf.technology](https://www.ddf.technology/). Tutti i
+diritti riservati. Consultare [LICENSE](LICENSE).
