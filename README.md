@@ -1,20 +1,19 @@
-# LocalDBCrudDemo
+# LocalDBCrud
 
-Applicazione didattica Windows Forms che mostra un flusso CRUD completo su SQL Server Express
-LocalDB: autenticazione locale, gestione di prodotti e utenti, ricerca, ordinamento ed esportazione
-CSV/XLSX.
+Applicazione didattica Windows Forms che mostra un flusso CRUD completo su un database locale
+SQL Server Express LocalDB. Il progetto è volutamente concentrato sulla gestione dei prodotti:
+creazione, lettura, modifica, eliminazione, ricerca, ordinamento ed esportazione CSV/XLSX.
 
-![Schermata CRUD con dati fittizi](docs/screenshots/crud-dashboard.png)
+![Schermata principale del CRUD](docs/screenshots/crud-dashboard.png)
 
 ## Funzioni
 
-- creazione automatica del database locale al primo avvio;
-- dati iniziali esclusivamente fittizi;
-- inserimento, lettura, modifica ed eliminazione dei prodotti;
+- avvio diretto della form principale, senza account o autenticazione;
+- creazione automatica del database e della tabella `Prodotti` al primo avvio;
+- inserimento di tre prodotti fittizi per rendere l'esempio subito esplorabile;
+- operazioni CRUD eseguite con query parametrizzate;
 - ricerca e ordinamento della griglia;
-- gestione dimostrativa degli utenti;
-- esportazione dei dati in CSV e XLSX;
-- password derivate con PBKDF2-HMAC-SHA256, sale casuale e 100.000 iterazioni.
+- esportazione dei dati in CSV e XLSX.
 
 ## Requisiti
 
@@ -25,30 +24,22 @@ CSV/XLSX.
 
 ## Primo avvio
 
-Aprire `LocalDB_mdf.sln`, ripristinare i pacchetti NuGet e compilare. Al primo avvio l'applicazione
-crea il database `LocalDBCrudDemo`, le tabelle e tre prodotti fittizi.
-
-Credenziali iniziali esclusivamente dimostrative:
-
-```text
-Username: demo
-Password: demo
-```
-
-Cambiare o eliminare l'utente demo se si usa il progetto per ulteriori esercizi.
+Aprire `LocalDBCrud.sln`, ripristinare i pacchetti NuGet e compilare. L'applicazione crea
+automaticamente il database `LocalDBCrud`, la tabella `Prodotti` e i dati fittizi, quindi apre
+direttamente l'interfaccia CRUD. Non sono previsti utenti, login o credenziali.
 
 ## Compilazione
 
 ```powershell
-nuget restore .\LocalDB_mdf.sln
-msbuild .\LocalDB_mdf.sln /t:Rebuild /p:Configuration=Release
+nuget restore .\LocalDBCrud.sln
+msbuild .\LocalDBCrud.sln /t:Rebuild /p:Configuration=Release
 ```
 
 ## Ambito e limiti
 
 Questo è un esempio didattico, non un modello pronto per dati reali o ambienti di produzione.
-Non implementa ruoli, audit log, recupero password, rate limiting, migrazioni versionate o una
-strategia completa di backup. L'istanza LocalDB appartiene all'utente Windows corrente.
+Non implementa migrazioni versionate, concorrenza multiutente, audit log o una strategia completa
+di backup. L'istanza LocalDB appartiene all'utente Windows corrente.
 
 L'export PDF presente nell'archivio storico è stato rimosso prima della pubblicazione MIT perché
 dipendeva da componenti con licenza AGPL/commerciale. Restano CSV e XLSX tramite dipendenze

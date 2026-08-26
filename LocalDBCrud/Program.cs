@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LocalDB_mdf
+namespace LocalDBCrud
 {
     internal static class Program
     {
@@ -24,24 +24,14 @@ namespace LocalDB_mdf
             catch (Exception exception)
             {
                 MessageBox.Show(
-                    "Impossibile inizializzare il database demo. Verificare che SQL Server Express LocalDB sia installato.\n\n" + exception.Message,
-                    "LocalDB CRUD Demo",
+                    "Impossibile inizializzare il database locale. Verificare che SQL Server Express LocalDB sia installato.\n\n" + exception.Message,
+                    "LocalDB CRUD",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
             }
 
-            FormLogin login = new FormLogin();
-
-            // Se il login restituisce OK, allora avviamo l'app principale
-            if (login.ShowDialog() == DialogResult.OK)
-            {
-                Application.Run(new Form1());
-            }
-            else
-            {
-                Application.Exit();
-            }
+            Application.Run(new Form1());
         }
     }
 }

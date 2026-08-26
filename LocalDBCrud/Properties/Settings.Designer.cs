@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LocalDB_mdf.Properties
+namespace LocalDBCrud.Properties
 {
 
 

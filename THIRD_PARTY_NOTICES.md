@@ -1,6 +1,6 @@
 # Third-party notices
 
-LocalDBCrudDemo è distribuito con licenza MIT. Le dipendenze restano proprietà dei rispettivi
+LocalDBCrud è distribuito con licenza MIT. Le dipendenze restano proprietà dei rispettivi
 autori e sono soggette alle proprie licenze.
 
 ## Dipendenze principali
@@ -15,7 +15,7 @@ autori e sono soggette alle proprie licenze.
 | SixLabors.Fonts | 1.0.0 | Apache-2.0 | https://github.com/SixLabors/Fonts |
 
 Le ulteriori librerie `Microsoft.*` e `System.*` risolte da NuGet sono dichiarate in
-`LocalDB_mdf/packages.config` e mantengono i rispettivi avvisi e condizioni.
+`LocalDBCrud/packages.config` e mantengono i rispettivi avvisi e condizioni.
 
 ## Componente rimosso
 

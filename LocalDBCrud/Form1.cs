@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace LocalDB_mdf
+namespace LocalDBCrud
 {
     public partial class Form1 : Form
     {
@@ -227,15 +227,6 @@ namespace LocalDB_mdf
             // Cerca automaticamente ogni volta che cambia il testo
             AggiornaFiltri();
         }
-
-        // Evento del tasto GESTIONE UTENTI
-        private void btnGestioneUtenti_Click(object sender, EventArgs e)
-        {
-            FormUtenti frm = new FormUtenti();
-            frm.ShowDialog(); // Apre la finestra come modale
-        }
-
-        //-----------------------------
 
         // Funzione per leggere i dati e mostrarli nella griglia
         private void CaricaDati()
