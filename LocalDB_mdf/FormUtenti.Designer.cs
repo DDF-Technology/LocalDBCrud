@@ -117,7 +117,7 @@
             this.Name = "FormUtenti";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Gestione Utenti";
+            this.Text = "LocalDB CRUD Demo - Gestione Utenti";
             this.Load += new System.EventHandler(this.FormUtenti_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUtenti)).EndInit();
             this.ResumeLayout(false);

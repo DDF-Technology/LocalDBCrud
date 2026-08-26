@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Le informazioni generali relative a un assembly sono controllate dal seguente 
 // set di attributi. Modificare i valori di questi attributi per modificare le informazioni
 // associate a un assembly.
-[assembly: AssemblyTitle("LocalDB_mdf")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("LocalDBCrudDemo")]
+[assembly: AssemblyDescription("Dimostratore didattico CRUD su SQL Server Express LocalDB")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LocalDB_mdf")]
-[assembly: AssemblyCopyright("Copyright ©  2026")]
+[assembly: AssemblyCompany("DDF.Technology")]
+[assembly: AssemblyProduct("LocalDBCrudDemo")]
+[assembly: AssemblyCopyright("Copyright © 2026 Fabio De Deo")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

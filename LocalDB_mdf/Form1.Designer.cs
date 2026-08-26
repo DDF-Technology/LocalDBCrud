@@ -42,7 +42,6 @@
             this.btnModifica = new System.Windows.Forms.Button();
             this.btnEsportaCSV = new System.Windows.Forms.Button();
             this.btnEsportaExcel = new System.Windows.Forms.Button();
-            this.btnEsportaPdf = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -176,7 +175,7 @@
             // 
             this.btnEsportaCSV.Location = new System.Drawing.Point(12, 574);
             this.btnEsportaCSV.Name = "btnEsportaCSV";
-            this.btnEsportaCSV.Size = new System.Drawing.Size(250, 23);
+            this.btnEsportaCSV.Size = new System.Drawing.Size(384, 23);
             this.btnEsportaCSV.TabIndex = 11;
             this.btnEsportaCSV.Text = "Esporta CSV";
             this.btnEsportaCSV.UseVisualStyleBackColor = true;
@@ -184,23 +183,13 @@
             // 
             // btnEsportaExcel
             // 
-            this.btnEsportaExcel.Location = new System.Drawing.Point(268, 574);
+            this.btnEsportaExcel.Location = new System.Drawing.Point(404, 574);
             this.btnEsportaExcel.Name = "btnEsportaExcel";
-            this.btnEsportaExcel.Size = new System.Drawing.Size(265, 23);
+            this.btnEsportaExcel.Size = new System.Drawing.Size(384, 23);
             this.btnEsportaExcel.TabIndex = 12;
             this.btnEsportaExcel.Text = "Esporta Excel";
             this.btnEsportaExcel.UseVisualStyleBackColor = true;
             this.btnEsportaExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
-            // 
-            // btnEsportaPdf
-            // 
-            this.btnEsportaPdf.Location = new System.Drawing.Point(539, 574);
-            this.btnEsportaPdf.Name = "btnEsportaPdf";
-            this.btnEsportaPdf.Size = new System.Drawing.Size(249, 23);
-            this.btnEsportaPdf.TabIndex = 13;
-            this.btnEsportaPdf.Text = "Esporta Pdf";
-            this.btnEsportaPdf.UseVisualStyleBackColor = true;
-            this.btnEsportaPdf.Click += new System.EventHandler(this.btnEsportaPDF_Click);
             // 
             // label1
             // 
@@ -342,7 +331,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnEsportaPdf);
             this.Controls.Add(this.btnEsportaExcel);
             this.Controls.Add(this.btnEsportaCSV);
             this.Controls.Add(this.btnModifica);
@@ -361,7 +349,7 @@
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DB Locale";
+            this.Text = "LocalDB CRUD Demo";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDati)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPrezzo)).EndInit();
@@ -385,7 +373,6 @@
         private System.Windows.Forms.Button btnModifica;
         private System.Windows.Forms.Button btnEsportaCSV;
         private System.Windows.Forms.Button btnEsportaExcel;
-        private System.Windows.Forms.Button btnEsportaPdf;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

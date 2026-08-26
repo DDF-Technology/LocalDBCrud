@@ -31,7 +31,7 @@ namespace LocalDB_mdf
 
         private void CaricaUtenti()
         {
-            using (SqlConnection con = new SqlConnection(Utility.connStringUtenti))
+            using (SqlConnection con = new SqlConnection(Utility.ConnectionString))
             {
                 // Selezioniamo solo Id e Username. 
                 // Mai mostrare Password e Salt nella griglia!
@@ -53,7 +53,7 @@ namespace LocalDB_mdf
             string salt = Utility.GenerateSalt();
             string hash = Utility.ComputeHashWithSalt(txtNuovaPass.Text, salt);
 
-            using (SqlConnection con = new SqlConnection(Utility.connStringUtenti))
+            using (SqlConnection con = new SqlConnection(Utility.ConnectionString))
             {
                 string query = "INSERT INTO Utenti (Username, Password, Salt) VALUES (@user, @pass, @salt)";
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -75,7 +75,7 @@ namespace LocalDB_mdf
                 int id = Convert.ToInt32(dgvUtenti.CurrentRow.Cells["Id"].Value);
                 // Evitiamo di far cancellare l'utente con cui siamo loggati (opzionale)
 
-                using (SqlConnection con = new SqlConnection(Utility.connStringUtenti))
+                using (SqlConnection con = new SqlConnection(Utility.ConnectionString))
                 {
                     SqlCommand cmd = new SqlCommand("DELETE FROM Utenti WHERE Id = @id", con);
                     cmd.Parameters.AddWithValue("@id", id);

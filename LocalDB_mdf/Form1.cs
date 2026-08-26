@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using iText.Kernel.Pdf;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,10 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Layout.Properties;
-using iText.Kernel.Colors;
 
 namespace LocalDB_mdf
 {
@@ -44,7 +39,7 @@ namespace LocalDB_mdf
         // Evento del tasto INSERISCI
         private void btnInserisci_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(Utility.connStringProdotti))
+            using (SqlConnection con = new SqlConnection(Utility.ConnectionString))
             {
                 string percorsoEffettivo = AppDomain.CurrentDomain.BaseDirectory;
                 Console.WriteLine("Il database deve trovarsi qui: " + percorsoEffettivo);
@@ -75,7 +70,7 @@ namespace LocalDB_mdf
                 return;
             }
 
-            using (SqlConnection con = new SqlConnection(Utility.connStringProdotti))
+            using (SqlConnection con = new SqlConnection(Utility.ConnectionString))
             {
                 string query = "UPDATE Prodotti SET Nome = @nome, Prezzo = @prezzo WHERE Id = @id";
                 SqlCommand cmd = new SqlCommand(query, con);
@@ -110,7 +105,7 @@ namespace LocalDB_mdf
             {
                 int id = Convert.ToInt32(dgvDati.CurrentRow.Cells["Id"].Value);
 
-                using (SqlConnection con = new SqlConnection(Utility.connStringProdotti))
+                using (SqlConnection con = new SqlConnection(Utility.ConnectionString))
                 {
                     string query = "DELETE FROM Prodotti WHERE Id = @id";
                     SqlCommand cmd = new SqlCommand(query, con);
@@ -203,60 +198,6 @@ namespace LocalDB_mdf
             }
         }
 
-        // Evento del tasto ESPORTA PDF
-        private void btnEsportaPDF_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "PDF File (*.pdf)|*.pdf";
-            sfd.FileName = "Report_Prodotti.pdf";
-
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                using (PdfWriter writer = new PdfWriter(sfd.FileName))
-                {
-                    using (PdfDocument pdf = new PdfDocument(writer))
-                    {
-                        Document document = new Document(pdf);
-
-                        // Aggiungiamo un titolo al report
-                        Paragraph header = new Paragraph("REPORT PRODOTTI")
-                            .SetTextAlignment(TextAlignment.CENTER)
-                            .SetFontSize(20);
-                        document.Add(header);
-
-                        // Creiamo una tabella con lo stesso numero di colonne della DataGridView
-                        Table table = new Table(dgvDati.Columns.Count).UseAllAvailableWidth();
-
-                        // Aggiungiamo le intestazioni delle colonne
-                        foreach (DataGridViewColumn col in dgvDati.Columns)
-                        {
-                            // Creare il Paragraph e applicare SetBold() al Paragraph (non a Cell)
-                            Paragraph headerText = new Paragraph(col.HeaderText);
-                            Cell headerCell = new Cell().Add(headerText);
-                            headerCell.SetBackgroundColor(ColorConstants.LIGHT_GRAY);
-                            table.AddHeaderCell(headerCell);
-                        }
-
-                        // Aggiungiamo i dati delle righe
-                        foreach (DataGridViewRow row in dgvDati.Rows)
-                        {
-                            if (!row.IsNewRow)
-                            {
-                                foreach (DataGridViewCell cell in row.Cells)
-                                {
-                                    table.AddCell(new Paragraph(cell.Value?.ToString() ?? ""));
-                                }
-                            }
-                        }
-
-                        document.Add(table);
-                        document.Close();
-                    }
-                }
-                MessageBox.Show("Report PDF generato con successo!");
-            }
-        }
-
         // Evento quando l'utente clicca su una cella della griglia
         private void dgvDati_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -299,7 +240,7 @@ namespace LocalDB_mdf
         // Funzione per leggere i dati e mostrarli nella griglia
         private void CaricaDati()
         {
-            using (SqlConnection con = new SqlConnection(Utility.connStringProdotti))
+            using (SqlConnection con = new SqlConnection(Utility.ConnectionString))
             {
                 SqlDataAdapter da = new SqlDataAdapter("SELECT * FROM Prodotti", con);
                 DataTable dt = new DataTable();
@@ -324,7 +265,7 @@ namespace LocalDB_mdf
         // Funzione per cercare dati specifici
         private void CercaDati(string termineRicerca)
         {
-            using (SqlConnection con = new SqlConnection(Utility.connStringProdotti))
+            using (SqlConnection con = new SqlConnection(Utility.ConnectionString))
             {
                 // La query usa LIKE con % per cercare ovunque nel testo
                 string query = "SELECT * FROM Prodotti WHERE Nome LIKE @ricerca OR Prezzo LIKE @ricerca"; //"SELECT * FROM Prodotti WHERE Nome LIKE @ricerca";
@@ -342,7 +283,7 @@ namespace LocalDB_mdf
         // Funzione per aggiornare i filtri di ricerca e ordinamento
         private void AggiornaFiltri()
         {
-            using (SqlConnection con = new SqlConnection(Utility.connStringProdotti))
+            using (SqlConnection con = new SqlConnection(Utility.ConnectionString))
             {
                 // 1. Base della query
                 string query = "SELECT * FROM Prodotti WHERE Nome LIKE @ricerca";

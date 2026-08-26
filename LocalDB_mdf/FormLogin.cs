@@ -32,7 +32,7 @@ namespace LocalDB_mdf
         // Evento di click sul pulsante di login
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection(Utility.connStringUtenti))
+            using (SqlConnection con = new SqlConnection(Utility.ConnectionString))
             {
                 // 1. Recuperiamo l'hash salvato e il sale per quell'utente
                 string query = "SELECT Password, Salt FROM Utenti WHERE Username = @user";
